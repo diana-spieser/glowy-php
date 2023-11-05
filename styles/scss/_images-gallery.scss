@@ -14,6 +14,7 @@
         display: inline;
         &:hover .img-hover {
             opacity: 1;
+
         }
     }
 
@@ -47,7 +48,7 @@
         .img-infos {
             display: flex;
             justify-content: space-between;
-            color: white;
+            color: $main-color;
             padding-left: 3%;
             padding-right: 3%;
             padding-bottom: 2%;

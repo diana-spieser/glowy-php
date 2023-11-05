@@ -1,2 +1,19 @@
 $hauteur-photo: 74vh;
 $hauteur-photo-mobile: 45vh;
+
+
+// Variables
+
+$website-width: 1280px;
+$main-color: #B9FF1B;
+$light-color: #f4f4f4;
+$medium-color: #ccc;
+$dark-color: #333;
+
+@function set-text-color($color) {
+  @if (lightness($color) > 50) {
+    @return #000;
+  } @else {
+    @return #fff;
+  }
+}

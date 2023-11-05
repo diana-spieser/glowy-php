@@ -23,16 +23,41 @@ function theme_enqueue_styles() {
     // Ajout du style personnalisé généré à partir de Sass, dépendant du style du thème parent
     wp_enqueue_style('custom-style', get_template_directory_uri() . '/styles/style.css', array('parent-style'), '1.0.0', 'all');
 }
+
 add_action('wp_enqueue_scripts', 'theme_enqueue_styles');
+function enqueue_font_awesome() {
+    wp_enqueue_script('font-awesome', 'https://kit.fontawesome.com/a7f5a50e2d.js', array(), null, true);
+}
+add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
+
 
 // Enqueue le script "script.js" dépendant de jQuery et utilise AJAX
 function custom_enqueue_scripts() {
-    wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('jquery'), '', true);
+    // Enqueue simple-parallax
+    wp_enqueue_script('simple-parallax', get_template_directory_uri() . '/assets/js/simple-parallax.js', array('jquery'), '', true);
+
+    // Enqueue your custom script with 'simple-parallax' as a dependency
+    wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('simple-parallax'), '', true);
+
+    // Enqueue other scripts
+    wp_enqueue_script('typewriter', get_template_directory_uri() . '/assets/js/typewriter.js', array(), '', true);
+    wp_enqueue_script('animate-fade', get_template_directory_uri() . '/assets/js/animate-fade.js', array('jquery'), '', true);
 
     // Localize the script with the AJAX URL
     wp_localize_script('script', 'my_ajax_obj', array('ajax_url' => admin_url('admin-ajax.php')));
 }
+
 add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
+
+add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
+
+function b5f_wow_init() {
+    wp_register_script( 'wow', get_stylesheet_directory_uri() . '/js/wow.min.js' );
+    wp_enqueue_script( 'my-wow', get_stylesheet_directory_uri() . '/assets/js/my-wow.js', array( 'wow' ), null, true );
+    wp_enqueue_style( 'wow-css', get_stylesheet_directory_uri() . '/css/animate.min.css' );
+}
+add_action('wp_enqueue_scripts', 'b5f_wow_init');
+
 // Prise en charge des images mises en avant
 add_theme_support('post-thumbnails');
 
@@ -105,7 +130,8 @@ function displayImages($galerie, $exit) {
       </div>
     </div>
   </div>
-</div> <?php
+</div>
+<?php
         }
     }
     else {

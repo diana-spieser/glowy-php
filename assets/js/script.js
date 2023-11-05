@@ -1,5 +1,5 @@
 (function ($) {
-  'use strict';
+  ('use strict');
 
   $('.wpcf7-submit').addClass('bouton');
 
@@ -78,9 +78,7 @@
   }
 
   jQuery(document).ready(function ($) {
-    $('.interaction-photo__btn').click(function () {
-      
-    });
+    $('.interaction-photo__btn').click(function () {});
   });
 
   navigationPhotos($('.arrow-gauche'), $('.previous-image'));
@@ -141,7 +139,8 @@
           $('#galerie__btn').attr('style', 'display: none;');
         } else if (
           (categorieSelection === 'concert' ||
-            categorieSelection === 'reception' || categorieSelection === 'television') &&
+            categorieSelection === 'reception' ||
+            categorieSelection === 'television') &&
           pageActuelle === 1
         ) {
           $('#galerie__btn').attr('style', 'display: none;');
@@ -153,12 +152,29 @@
         console.warn(result);
       },
     });
-    }
+  }
 
+   $('.btn_nav').click(function () {
+     // Animate content
+     $('.page__style').addClass('animate_content');
+     $('.page__description').fadeOut(100).delay(2800).fadeIn();
 
+     setTimeout(function () {
+       $('.page__style').removeClass('animate_content');
+     }, 3200);
+   });
 
+   // On click, show the corresponding section after 1500ms
+   $('.home_link').click(function () {
+     setTimeout(function () {
+       $('.home').addClass('fadeIn');
+     }, 1500);
+   });
 
-
-
+   $('.about_link').click(function () {
+     setTimeout(function () {
+       $('.about').addClass('fadeIn');
+     }, 1500);
+   });
 
 })(jQuery);

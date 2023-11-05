@@ -2,6 +2,11 @@
     margin: 0;
     padding: 0;
 }
+
+body {
+font-family: 'Dosis', sans-serif;
+}
+
 main {
     max-width: 1980px;
     display: flex;
@@ -28,12 +33,14 @@ a {
     width: 49.2%;
 }
 
+
 h1 {
     font-family: $police-principale;
     font-weight: 400;
     font-size: 66px;
     line-height: 65px;
     text-transform: uppercase;
+    color: $dark-color;
 }
 .page {
     display: flex;
@@ -69,7 +76,17 @@ h1 {
     z-index: 95;
 }
 
+.hero {
+  position: relative;
+  z-index: 1;
+}
 
+
+h1 {
+  position: relative;
+  z-index: 100; /* Set the z-index higher to make sure it's above the parallax */
+
+}
 
 @media screen and (max-width: 1000px) {
     .bloc-page {
