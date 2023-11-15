@@ -15,7 +15,7 @@
                 array(
                     'taxonomy' => 'format',
                     'field' => 'slug',
-                    'terms' => 'landing',
+                    'terms' => 'repository',
                 ),
             ),
             'orderby' => 'rand',

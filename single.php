@@ -9,18 +9,20 @@
   <section class="bloc-photo colonnes">
     <div class="bloc-photo__description colonne">
       <h1><?php the_title() ?></h1>
-      <p>Référence : <span id="reference-photo"><?php echo get_field('reference_photo'); ?></span></p>
-      <p>Catégorie : <?php echo strip_tags(get_the_term_list($post->ID, 'categories_photo')); ?></p>
-      <p>Format : <?php echo strip_tags(get_the_term_list($post->ID, 'format')); ?></p>
-      <p>Type : <?php echo get_field('type_photo'); ?></p>
-      <p>Année : <?php echo get_the_date('Y'); ?></p>
+      <p>Year : <?php echo get_the_date('Y'); ?></p>
+      <p>MAIN TECHNOLOGY : <?php echo strip_tags(get_the_term_list($post->ID, 'categories_photo')); ?></p>
+      <p>TYPE WEBSITE: <?php echo strip_tags(get_the_term_list($post->ID, 'format')); ?></p>
+      <p>Desctiption : <?php echo get_field('type_photo'); ?></p>
+      <p>URL: <span id="reference-photo"><?php echo get_field('reference_photo'); ?></span></p>
+
+
     </div>
     <img class="bloc-photo__image colonne" src="<?php the_post_thumbnail_url(); ?>">
   </section>
 
   <section class="interaction-photo colonnes">
     <div>
-      <p class="texte">Cette photo vous intéresse ?</p>
+      <p class="texte">You want to know more ?</p>
       <input class="interaction-photo__btn bouton btn-modale" type="button" value="Contact">
     </div>
     <div class="interaction-photo__navigation">
@@ -59,7 +61,7 @@
   </section>
 
   <section class="recommandations">
-    <h2>Vous aimerez aussi</h2>
+    <h2>Yous may also like</h2>
     <div class="recommandations__images colonnes">
       <?php
                 $categorie = strip_tags(get_the_term_list($post->ID, 'categories_photo'));
@@ -81,14 +83,14 @@
                     displayImages($random_images, false);
                 }
                 else {
-                    echo '<p class="texte">Il n\'y a pas encore d\'autres photos à afficher dans cette catégorie.</p>';
+                    echo '<p class="texte">There are no other websites in this category to be displayed.</p>';
                 }
                 /* wp_reset_postdata(); */
             ?>
 
     </div>
     <button class="recommandations__btn bouton" onclick="window.location.href='<?php echo site_url() ?>'">
-      Toutes les photos
+      All my projects
     </button>
 
   </section>

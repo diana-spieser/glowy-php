@@ -4,7 +4,7 @@
   <h1>Page introuvable</h1>
   <div class="page__contenu">
     <button class="recommandations__btn bouton" onclick="window.location.href='<?php echo site_url() ?>'">
-      Toutes les photos
+      All my projects
     </button>
   </div>
 </div>
