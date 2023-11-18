@@ -9,6 +9,8 @@ $main-color: #B9FF1B;
 $light-color: #f4f4f4;
 $medium-color: #ccc;
 $dark-color: #333;
+$violet-color: #44398C;
+$bg-image: url("../assets/images/showcase.png");
 
 @function set-text-color($color) {
   @if (lightness($color) > 50) {
