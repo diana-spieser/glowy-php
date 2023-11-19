@@ -76,9 +76,6 @@ box-shadow:  20px 20px 60px #bebebe,
 
       li {
         line-height: 2;
-        &:hover {
-          color: $main-color;
-        }
 
         &.stats-title {
           font-size: 1.5rem;
@@ -98,7 +95,8 @@ box-shadow:  20px 20px 60px #bebebe,
         }
 
         &:nth-child(even) {
-          background: $medium-color;
+          background: $violet-color;
+          color: $main-color;
         }
       }
     }
@@ -193,7 +191,7 @@ box-shadow:  20px 20px 60px #bebebe,
     .award-1 .fas,
     .award-2 .fas,
     .award-3 .fas {
-      color: $main-color;
+      color: $violet-color;
       margin: 1rem;
       transition: transform 0.3s;
       &:hover {
@@ -583,3 +581,18 @@ input[class^="btn-"]:hover {
 box-shadow:  20px 20px 60px #bebebe,
              -20px -20px 60px #ffffff;
 }
+
+.fille {
+  height: 150px;
+  position: absolute;
+  margin-left: 50px;
+  right: 150;
+}
+
+#work {
+  background-image: url('<?php echo get_template_directory_uri(); ?>/assets/images/showcase.jpg');
+  background-color: $violet-color;
+  /* Add more background properties if needed, e.g., background-size, background-position, etc. */
+}
+
+

@@ -40,7 +40,9 @@ function custom_enqueue_scripts() {
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('simple-parallax'), '', true);
 
     // Enqueue other scripts
+  if (is_home() || is_front_page()) {
     wp_enqueue_script('typewriter', get_template_directory_uri() . '/assets/js/typewriter.js', array(), '', true);
+}
     wp_enqueue_script('animate-fade', get_template_directory_uri() . '/assets/js/animate-fade.js', array('jquery'), '', true);
 
     // Localize the script with the AJAX URL
@@ -52,7 +54,7 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
 function b5f_wow_init() {
-    wp_register_script( 'wow', get_stylesheet_directory_uri() . '/js/wow.min.js' );
+   wp_enqueue_script('wow', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.3.0/wow.min.js', array(), null, true);
     wp_enqueue_script( 'my-wow', get_stylesheet_directory_uri() . '/assets/js/my-wow.js', array( 'wow' ), null, true );
     wp_enqueue_style( 'wow-css', get_stylesheet_directory_uri() . '/css/animate.min.css' );
 }
@@ -71,42 +73,6 @@ function displayTaxonomies($nomTaxonomie) {
         }
     }
 }
-
-
-
-function filter() {
-    $myAjaxRequest = new WP_Query(array(
-        'post_type' => 'photos',
-        'orderby' => 'date',
-        'order' => $_POST['orderDirection'],
-        'posts_per_page' => 4,
-        'paged' => $_POST['page'],
-        'tax_query' =>
-            array(
-                'relation' => 'AND',
-                $_POST['categorieSelection'] != "all" ?
-                    array(
-                        'taxonomy' => $_POST['categorieTaxonomie'],
-                        'field' => 'slug',
-                        'terms' => $_POST['categorieSelection'],
-                    )
-                : '',
-                $_POST['formatSelection'] != "all" ?
-                    array(
-                        'taxonomy' => $_POST['formatTaxonomie'],
-                        'field' => 'slug',
-                        'terms' => $_POST['formatSelection'],
-                    )
-                : '',
-            )
-        )
-    );
-    displayImages($myAjaxRequest, true);
-}
-add_action('wp_ajax_nopriv_filter', 'filter');
-add_action('wp_ajax_filter', 'filter');
-
-
 
 function displayImages($galerie, $exit) {
     if($galerie->have_posts()) {

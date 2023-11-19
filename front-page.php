@@ -6,10 +6,10 @@
 
       <h1>
         I am
-        <span class="txt-type" data-wait="3000" data-words='[" Diana Spieser"]'></span>
+        <span class="txt-type" data-wait="3000" data-words='["Diana Spieser"]'></span>
       </h1>
       <p class="lead">Junior Full stack web developer</p>
-      <a href="#" class="btn-light">View my work</a>
+      <a href="https://diana-spieser.tech/index.php/work/" class="btn-light">View my work</a>
     </div>
   </div>
 </header>
@@ -75,7 +75,7 @@
     </div>
     <div>
       <ul>
-        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/16-min.png"
+        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/22-min.png"
             alt="Prévisualisation image précédente"></li>
         <li class="stats-title wow zoomIn">Telerik Alpha JS Academy</li>
         <li class="stats-number">2023</li>
@@ -83,7 +83,7 @@
     </div>
     <div>
       <ul>
-        <li><img class="thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/13-min.png"
+        <li><img class="thumbnail" src="<?php echo get_template_directory_uri(); ?>/assets/images/22-min.png"
             alt="Prévisualisation image précédente"></li>
         <li class="stats-title wow zoomIn">Hackathons</li>
         <li class="stats-number">2</li>
@@ -91,7 +91,7 @@
     </div>
     <div>
       <ul>
-        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/20-min.png"
+        <li><img src="<?php echo get_template_directory_uri(); ?>/assets/images/22-min.png"
             alt="Prévisualisation image précédente"></li>
         <li class="stats-title wow zoomIn">40 projects</li>
         <li class="stats-number">8 Websites Online</li>

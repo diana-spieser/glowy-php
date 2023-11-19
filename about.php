@@ -8,9 +8,13 @@ get_header(); // Include your header template
 // Add your custom content for the About page here
 ?><section id="about-a" class="text-center py-3">
   <div class="container">
-    <h2 class="section-title">About Me</h2>
-    <div class="bottom-line"></div>
-    <p class="lead">
+    <div>
+      <img src="<?php echo get_template_directory_uri(); ?>/assets/images/fille.png"
+        alt="profile picture of Diana Spieser" class="fille" />
+      <h2 class="section-title wow bounce" data-wow-duration="2s">About Me</h2>
+      <div class="bottom-line"></div>
+    </div>
+    <p class=" lead">
       Let me tell you a little about myself and what I do...
     </p>
     <div class="about-info">

@@ -2,21 +2,14 @@
 
 <?php
     get_template_part('modale');
-    get_template_part('lightbox');
+
 ?>
 
 <footer id="main-footer">
   <div class="footer-content container">
-    <?php
-        if (has_nav_menu('primary_menu')) {
-            wp_nav_menu(array('theme_location' => 'footer_menu',));
-        } ?>
-    <p>&copy; 2023. All rights reserved</p>
+    <p>&copy;All rights reserved</p>
 
     <div class="social">
-      <a class="social-link" href="https://twitter.com/Dianas57655855S" aria-label="Twitter">
-        <i class="fab fa-twitter" aria-hidden="true"></i>
-      </a>
       <a class="social-link" href="https://medium.com/@dianaspieser" aria-label="Medium">
         <i class="fab fa-medium" aria-hidden="true"></i>
       </a>

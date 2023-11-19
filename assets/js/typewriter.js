@@ -56,10 +56,18 @@ class TypeWriter {
 document.addEventListener('DOMContentLoaded', init);
 
 // Init App
+document.addEventListener('DOMContentLoaded', init);
+
 function init() {
   const txtElement = document.querySelector('.txt-type');
-  const words = JSON.parse(txtElement.getAttribute('data-words'));
-  const wait = txtElement.getAttribute('data-wait');
-  // Init TypeWriter
-  new TypeWriter(txtElement, words, wait);
+
+  if (txtElement) {
+    const words = JSON.parse(txtElement.getAttribute('data-words'));
+    const wait = txtElement.getAttribute('data-wait');
+
+    // Init TypeWriter
+    new TypeWriter(txtElement, words, wait);
+  } else {
+    console.error('Element with class "txt-type" not found.');
+  }
 }

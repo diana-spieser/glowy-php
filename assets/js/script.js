@@ -1,35 +1,24 @@
 (function ($) {
-  ('use strict');
+  'use strict';
 
   $('.wpcf7-submit').addClass('bouton');
 
   var dureeTransitionPopup = 500;
   var modale = document.getElementById('modale-container');
-  var lightbox = document.getElementById('lightbox-container');
   var btnFermetureModale = document.getElementById('close-modale');
-  var btnFermetureLightbox = document.getElementById('close-lightbox');
 
   $('.btn-modale').click(function () {
     transitionPopup($('.modale'), 1);
   });
+
   btnFermetureModale.onclick = function () {
     transitionPopup($('.modale'), 0);
   };
+
   window.onclick = function (event) {
     if (event.target == modale) {
       transitionPopup($('.modale'), 0);
     }
-  };
-
-  $(document).on('click', '.btn-plein-ecran', function () {
-    var image = $(this).parent().parent().prev();
-    var urlImage = image.attr('src');
-    var creerImage = '<img src="' + urlImage + '" alt="Image agrandie">';
-    $('.lightbox__image').html(creerImage);
-    transitionPopup($('.lightbox'), 1);
-  });
-  btnFermetureLightbox.onclick = function () {
-    transitionPopup($('.lightbox'), 0);
   };
 
   function transitionPopup(element, opacity) {
@@ -49,11 +38,11 @@
   }
 
   let menuMobileOrigine = $('.header-mobile').height() * -1;
-  let menuOuvert = -1;
+  let menuOuvert = false;
   $('.header-mobile').css('margin-top', menuMobileOrigine);
 
   $('.header__btn-menu').click(function () {
-    if (menuOuvert == -1) {
+    if (!menuOuvert) {
       $('.header-mobile').css('opacity', '1');
       effetMenu(0, 0);
     } else {
@@ -62,6 +51,7 @@
         $('.header-mobile').css('opacity', '0');
       }, dureeTransitionPopup);
     }
+    menuOuvert = !menuOuvert;
   });
 
   function effetMenu(opacite, position) {
@@ -74,11 +64,10 @@
       },
       dureeTransitionPopup
     );
-    menuOuvert = menuOuvert * -1;
   }
 
-  jQuery(document).ready(function ($) {
-    $('.interaction-photo__btn').click(function () {});
+  $('.interaction-photo__btn').click(function () {
+    // Handle the click event for .interaction-photo__btn
   });
 
   navigationPhotos($('.arrow-gauche'), $('.previous-image'));
@@ -95,86 +84,32 @@
     );
   }
 
-  let pageActuelle = 1;
+  $('.btn_nav').click(function () {
+    // Animate content
+    $('.page__style').addClass('animate_content');
+    $('.page__description').fadeOut(100).delay(2800).fadeIn();
 
-  $('#btn-load-more').on('click', function () {
-    pageActuelle++;
-    ajaxRequest(true);
+    setTimeout(function () {
+      $('.page__style').removeClass('animate_content');
+    }, 3200);
   });
 
-  $(document).on('change', '.js-filter-form', function (e) {
-    e.preventDefault();
-    pageActuelle = 1;
-    ajaxRequest(false);
+  // On click, show the corresponding section after 1500ms
+  $('.home_link').click(function () {
+    setTimeout(function () {
+      $('.home').addClass('fadeIn');
+    }, 1500);
   });
 
-  function ajaxRequest(chargerPlus) {
-    var categorieSelection = $('#select-categorie').val();
-    var formatSelection = $('#select-format').val();
-    var ordre = $('#select-ordre').val();
+  $('.about_link').click(function () {
+    setTimeout(function () {
+      $('.about').addClass('fadeIn');
+    }, 1500);
+  });
 
-    $.ajax({
-      type: 'POST',
-      url: my_ajax_obj.ajax_url,
-      dataType: 'html',
-      data: {
-        action: 'filter',
-        categorieTaxonomie: 'categories_photo',
-        categorieSelection: categorieSelection,
-        formatTaxonomie: 'format',
-        formatSelection: formatSelection,
-        orderDirection: ordre,
-        page: pageActuelle,
-      },
-      success: function (resultat) {
-        if (chargerPlus) {
-          $('.galerie__photos').append(resultat);
-        } else {
-          $('.galerie__photos').html(resultat);
-        }
-
-        if (categorieSelection === 'mariage' && pageActuelle >= 3) {
-          $('#galerie__btn').attr('style', 'display: none;');
-        } else if (pageActuelle === 5) {
-          $('#galerie__btn').attr('style', 'display: none;');
-        } else if (
-          (categorieSelection === 'concert' ||
-            categorieSelection === 'reception' ||
-            categorieSelection === 'television') &&
-          pageActuelle === 1
-        ) {
-          $('#galerie__btn').attr('style', 'display: none;');
-        } else {
-          $('#galerie__btn').attr('style', 'display: block;');
-        }
-      },
-      error: function (result) {
-        console.warn(result);
-      },
-    });
-  }
-
-   $('.btn_nav').click(function () {
-     // Animate content
-     $('.page__style').addClass('animate_content');
-     $('.page__description').fadeOut(100).delay(2800).fadeIn();
-
-     setTimeout(function () {
-       $('.page__style').removeClass('animate_content');
-     }, 3200);
-   });
-
-   // On click, show the corresponding section after 1500ms
-   $('.home_link').click(function () {
-     setTimeout(function () {
-       $('.home').addClass('fadeIn');
-     }, 1500);
-   });
-
-   $('.about_link').click(function () {
-     setTimeout(function () {
-       $('.about').addClass('fadeIn');
-     }, 1500);
-   });
-
+  $('.work_link').click(function () {
+    setTimeout(function () {
+      $('#work').addClass('fadeIn');
+    }, 1500);
+  });
 })(jQuery);

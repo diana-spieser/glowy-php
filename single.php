@@ -7,17 +7,20 @@
 <div class="page-photo bloc-page">
 
   <section class="bloc-photo colonnes">
-    <div class="bloc-photo__description colonne">
+    <div class="bloc-photo__description colonne wow slideInLeft" data-wow-duration="2s">
       <h1><?php the_title() ?></h1>
       <p>Year : <?php echo get_the_date('Y'); ?></p>
       <p>MAIN TECHNOLOGY : <?php echo strip_tags(get_the_term_list($post->ID, 'categories_photo')); ?></p>
       <p>TYPE WEBSITE: <?php echo strip_tags(get_the_term_list($post->ID, 'format')); ?></p>
-      <p>Desctiption : <?php echo get_field('type_photo'); ?></p>
-      <p>URL: <span id="reference-photo"><?php echo get_field('reference_photo'); ?></span></p>
+      <p class="web-description">Desctiption : <?php echo get_field('type_photo'); ?></p>
+      <p class="web-description">URL: <a href=" <?php echo esc_url(get_field('reference_photo')); ?>" target="_blank"
+          rel="noopener noreferrer"><?php echo esc_html(get_field('reference_photo')); ?></a></p>
+
 
 
     </div>
-    <img class="bloc-photo__image colonne" src="<?php the_post_thumbnail_url(); ?>">
+    <img class="bloc-photo__image colonne wow slideInRight" data-wow-duration="2s"
+      src="<?php the_post_thumbnail_url(); ?>">
   </section>
 
   <section class="interaction-photo colonnes">
@@ -62,8 +65,7 @@
 
   <section class="recommandations">
     <h2>Yous may also like</h2>
-    <div class="recommandations__images colonnes">
-      <?php
+    <div class="recommandations__images colonnes wow slideInLeft" data-wow-delay="3s"><?php
                 $categorie = strip_tags(get_the_term_list($post->ID, 'categories_photo'));
                 $random_images = new WP_Query(array (
                     'post_type' => 'photos',
@@ -86,12 +88,10 @@
                     echo '<p class="texte">There are no other websites in this category to be displayed.</p>';
                 }
                 /* wp_reset_postdata(); */
-            ?>
-
-    </div>
-    <button class="recommandations__btn bouton" onclick="window.location.href='<?php echo site_url() ?>'">
-      All my projects
-    </button>
+            ?> </div>
+    <button class="recommandations__btn bouton"
+      onclick="window.location.href='https://diana-spieser.tech/index.php/work/'">
+      All my projects</button>
 
   </section>
 
