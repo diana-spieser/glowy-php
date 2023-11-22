@@ -89,9 +89,9 @@
                 }
                 /* wp_reset_postdata(); */
             ?> </div>
-    <button class="recommandations__btn bouton"
-      onclick="window.location.href='https://diana-spieser.tech/index.php/work/'">
-      All my projects</button>
+    <button class="recommandations__btn bouton" onclick="window.location.href='<?php echo home_url(); ?>'">
+      All my projects
+    </button>
 
   </section>
 

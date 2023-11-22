@@ -21,6 +21,7 @@
     }
   };
 
+
   function transitionPopup(element, opacity) {
     if (opacity == 1) {
       $(element).css('display', 'flex');
@@ -37,22 +38,22 @@
     );
   }
 
-  let menuMobileOrigine = $('.header-mobile').height() * -1;
-  let menuOuvert = false;
-  $('.header-mobile').css('margin-top', menuMobileOrigine);
+    let menuMobileOrigine = $('.header-mobile').height() * -1;
+    let menuOuvert = false;
+    $('.header-mobile').css('margin-top', menuMobileOrigine);
 
-  $('.header__btn-menu').click(function () {
-    if (!menuOuvert) {
-      $('.header-mobile').css('opacity', '1');
-      effetMenu(0, 0);
-    } else {
-      effetMenu(1, menuMobileOrigine);
-      setTimeout(function () {
-        $('.header-mobile').css('opacity', '0');
-      }, dureeTransitionPopup);
-    }
-    menuOuvert = !menuOuvert;
-  });
+    $('.header__btn-menu').click(function () {
+      if (!menuOuvert) {
+        $('.header-mobile').css('opacity', '1');
+        effetMenu(0, 0);
+      } else {
+        effetMenu(1, menuMobileOrigine);
+        setTimeout(function () {
+          $('.header-mobile').css('opacity', '0');
+        }, dureeTransitionPopup);
+      }
+      menuOuvert = !menuOuvert;
+    });
 
   function effetMenu(opacite, position) {
     setTimeout(function () {
@@ -64,6 +65,7 @@
       },
       dureeTransitionPopup
     );
+
   }
 
   $('.interaction-photo__btn').click(function () {
@@ -84,6 +86,7 @@
     );
   }
 
+
   $('.btn_nav').click(function () {
     // Animate content
     $('.page__style').addClass('animate_content');
@@ -101,15 +104,14 @@
     }, 1500);
   });
 
-  $('.about_link').click(function () {
-    setTimeout(function () {
-      $('.about').addClass('fadeIn');
-    }, 1500);
-  });
+  // Smooth scroll for anchor links with the class 'scroll-link'
+    $('.scroll-link').on('click', function (event) {
+        event.preventDefault();
 
-  $('.work_link').click(function () {
-    setTimeout(function () {
-      $('#work').addClass('fadeIn');
-    }, 1500);
-  });
+        var target = $(this.hash);
+        $('html, body').animate({
+            scrollTop: target.offset().top
+        }, 800);
+    });
+
 })(jQuery);

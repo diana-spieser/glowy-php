@@ -35,8 +35,11 @@ add_action('wp_enqueue_scripts', 'enqueue_font_awesome');
 function custom_enqueue_scripts() {
     // Enqueue simple-parallax
     wp_enqueue_script('simple-parallax', get_template_directory_uri() . '/assets/js/simple-parallax.js', array('jquery'), '', true);
+    // Enqueue simple-parallax
+    wp_enqueue_script('simple-parallax', get_template_directory_uri() . '/assets/js/simpleParralax.min.js', array('jquery'), '', true);
 
-    // Enqueue your custom script with 'simple-parallax' as a dependency
+
+    // Enqueue your custom script
     wp_enqueue_script('script', get_template_directory_uri() . '/assets/js/script.js', array('simple-parallax'), '', true);
 
     // Enqueue other scripts
@@ -54,7 +57,7 @@ add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 add_action('wp_enqueue_scripts', 'custom_enqueue_scripts');
 
 function b5f_wow_init() {
-   wp_enqueue_script('wow', 'https://cdnjs.cloudflare.com/ajax/libs/wow/1.3.0/wow.min.js', array(), null, true);
+   wp_enqueue_script('wow',get_template_directory_uri() . 'assets//js/wow.min.js', array(), '1.3.0', true);
     wp_enqueue_script( 'my-wow', get_stylesheet_directory_uri() . '/assets/js/my-wow.js', array( 'wow' ), null, true );
     wp_enqueue_style( 'wow-css', get_stylesheet_directory_uri() . '/css/animate.min.css' );
 }

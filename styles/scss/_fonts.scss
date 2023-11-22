@@ -1,5 +1,19 @@
-@import url('https://fonts.googleapis.com/css2?family=Space+Mono&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins&display=swap');
-@import url('https://fonts.googleapis.com/css?family=Montserrat');
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/Montserrat-VariableFont_wght.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+    display: swap;
+}
+
+@font-face {
+    font-family: 'Montserrat';
+    src: url('../assets/fonts/Montserrat-Italic-VariableFont_wght.ttf') format('truetype');
+    font-weight: italic;
+    font-style: normal;
+    display: swap;
+}
+
+
 $police-principale: 'Montserrat', sans-serif;
 $police-secondaire: 'Montserrat', sans-serif;
